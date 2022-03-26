@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+
+print -rl -- ${(ko)commands} | fzf --no-color --reverse --border=vertical | (nohup ${SHELL:-"/bin/sh"} &) >/dev/null 2>&1
