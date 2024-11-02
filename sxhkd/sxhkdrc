@@ -4,12 +4,16 @@ super + Return
 
 #program launcher
 super + d
-#	dmenu_run -fn "s4 CozetteVector:style=Regular:pixelsize=12" -nb '#000000' -sb '#1e1e1e' -nf '#fff'
-	urxvt -name menu -e zsh $HOME/fzf-menu/fzf-menu
+	dmenu_run -fn cozette -nb '#000000' -sb '#1e1e1e' -nf '#fff'
+#	urxvt -name menu -e $HOME/fzf-menu/fzf-menu
 
 #terminal file manager
 super + shift + p
-	urxvt -e f
+	urxvt -e fff
+
+#thunar
+super + p
+	thunar
 
 #set the window state
 super + {t,s,e}
@@ -47,4 +51,56 @@ super + {Left,Down,Up,Right}
 super + {_,shift + }q
 	bspc node -{c,k}
 
-#test
+#make a web browser appear
+super + f
+#	librewolf
+	vieb	
+
+#brightness
+alt + super + 1 
+	brightnessctl s 1% && blugon -S 2000 
+alt + super + 2  
+	brightnessctl s 15% && blugon -S 6000
+
+# Raises volume
+XF86AudioRaiseVolume
+	amixer set Master 2%+ & notify-send vol+1 
+
+# Lowers volume 
+XF86AudioLowerVolume
+	amixer set Master 2%- &notify-send vol-1
+# Mutes 
+XF86AudioMute 
+#amixer set Master toggle     
+	amixer -D pulse set Master 1+ toggle
+
+#make a bpytop appear
+super + b
+	urxvt -e bpytop
+
+#reload sxhkdrc
+#super + shift + r
+#	pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+#reload bspwm
+super + alt + r
+	bspc wm -r & pkill -usr1 -x sxhkd && notify-send 'sxhkd' 'Reloaded config'
+
+#screenshot
+Print
+	shotgun -g $(hacksaw) && notify-send 'Capture Taken'
+
+#dmenupass
+super + shift + o
+	sh .scripts/passmenu.sh	
+#enter note
+super + n
+	urxvt -e sh .scripts/notes.sh
+
+#vim into notes
+super + shift + n
+	urxvt -e vim notes
+
+#extremely scuffed wifi script
+super + w
+	urxvt -e ~/.scripts/wifi.sh
