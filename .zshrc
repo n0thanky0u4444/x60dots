@@ -108,3 +108,6 @@ alias bm='bashmount'
 alias n='newsboat'
 alias fd='./.scripts/drive.sh'
 alias xssh='TERM=xterm-256color ssh'
+alias vpn='wg-quick up fi-hel-wg-001'
+alias vpn='wg-quick down fi-hel-wg-001'
+
